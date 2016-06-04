@@ -2813,6 +2813,15 @@ class JIRA(object):
                   r_json['contents']['completedIssues']]
         return issues
 
+
+    def added_issues_keys_during_sprint(self, board_id, sprint_id):
+        """
+        Return the total completed points this sprint.
+        """
+        return self._get_json('rapid/charts/sprintreport?rapidViewId=%s&sprintId=%s' % (board_id, sprint_id),
+                              base=self.AGILE_BASE_URL)['contents']['issueKeysAddedDuringSprint']
+
+
     def completedIssuesEstimateSum(self, board_id, sprint_id):
         """
         Return the total completed points this sprint.
